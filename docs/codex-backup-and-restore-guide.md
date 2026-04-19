@@ -173,6 +173,29 @@ Use this checklist before escalating:
 5. Only then consider cache reset or backup restore.
 6. Only after that consider deeper index/database repair.
 
+## Recommended Workspace Root Re-Add List
+
+If `By project` is incomplete after restore, re-check whether these commonly used local project roots are still registered in the Codex UI.
+
+High priority:
+
+- `/Users/jason/Documents/Project/AgentOperatingLayer`
+- `/Users/jason/Documents/Project/appraisal-skill`
+- `/Users/jason/Documents/Project/Claw-code`
+
+Lower frequency but still worth re-adding:
+
+- `/Users/jason/Documents/Project/Vercel`
+- `/Users/jason/Documents/Project/MLO`
+- `/Users/jason/Documents/Project/property-report-studio`
+- `/Users/jason/Documents/Project/PASEO UPLOAD FILE PATCH`
+
+Already confirmed important:
+
+- `/Users/jason/Documents/Playground`
+
+If these are missing from the Codex UI workspace list, `By project` may hide the related sessions even when the chats still exist locally.
+
 ## Summary
 
 When restore appears to succeed but `By project` is empty:
