@@ -142,6 +142,36 @@ That means:
 - the chats were not gone
 - the missing piece was workspace registration in the UI
 
+## Fast Re-Add Method Without Mouse Input
+
+If a project root is missing from Codex and you want to re-register it without using mouse clicks, a working method on this machine was:
+
+```bash
+open -a Codex "/full/project/path"
+```
+
+Examples:
+
+```bash
+open -a Codex "/Users/jason/Documents/Project/AgentOperatingLayer"
+open -a Codex "/Users/jason/Documents/Project/appraisal-skill"
+open -a Codex "/Users/jason/Documents/Project/Claw-code"
+```
+
+This was more reliable than:
+
+- editing sqlite first
+- editing global state first
+- trying to repair `By project` indirectly
+
+Practical interpretation:
+
+- if the chats still exist
+- and the project root itself still exists on disk
+- then directly opening that folder in Codex can cause Codex to re-register the workspace and restore the `By project` grouping
+
+Use this before deeper metadata repair whenever possible.
+
 ## Useful Local Files For Debugging
 
 If deeper debugging is needed, inspect these:
