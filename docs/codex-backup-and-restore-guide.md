@@ -294,6 +294,64 @@ Already confirmed important:
 
 If these are missing from the Codex UI workspace list, `By project` may hide the related sessions even when the chats still exist locally.
 
+## Suggested Thread Classification
+
+If `Playground` starts accumulating unrelated long-lived threads, do not leave everything there.
+
+Use stable project grouping instead.
+
+### Recommended Buckets
+
+- `MLO`
+  - borrower cases
+  - mortgage math
+  - qualifying income
+  - rate / loan amount scenarios
+  - case IDs such as `260***A`, `260***B`, and similar
+- `运维`
+  - Codex repair
+  - system operations
+  - SSH / server work
+  - plugin / connector setup
+  - account / workspace / automation operations
+- `Playground`
+  - true throwaway experiments
+  - small tests
+  - temporary scratch threads
+  - personal tax-return work if you intentionally want to keep it in Playground
+- `XHS` or content-operations project
+  - Xiaohongshu drafting
+  - content pipeline work
+  - content-library sync flows
+- `Research`
+  - property research
+  - appraisal support
+  - lead-gen tooling
+  - data-source evaluation
+
+### Practical Rule
+
+Do not classify by where the thread happened to start.
+
+Classify by the durable work type the thread belongs to.
+
+Examples observed on this machine:
+
+- `260415A` -> `MLO`
+- `260105A 计算不同利率贷款额度` -> `MLO`
+- `SSH连接...` -> `运维`
+- `Daily Jianlou XHS` -> `XHS`
+- `分析 10 Santa Fe #38 估价` -> `Research`
+
+### Why This Helps
+
+This keeps `By project` useful later:
+
+- operational threads stay under operations
+- mortgage cases stay under case work
+- content threads stay under content operations
+- `Playground` remains a real scratch space instead of a permanent archive
+
 ## Summary
 
 When restore appears to succeed but `By project` is empty:
