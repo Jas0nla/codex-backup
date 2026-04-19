@@ -172,6 +172,74 @@ Practical interpretation:
 
 Use this before deeper metadata repair whenever possible.
 
+## Moving One Thread To Another Project
+
+Sometimes the chat itself is present, but it is grouped under the wrong project root.
+
+In that case, a targeted thread move can work without broad restore steps.
+
+### Use This Only For A Small Number Of Known Threads
+
+This is a narrow repair method.
+
+Use it when:
+
+- you already know the exact `codex://threads/<id>`
+- you know the correct target project folder
+- you want to move only one or a few specific threads
+
+Do not use this as the first fix for a broad `By project` failure.
+
+### Minimal Safe Method
+
+Before editing anything:
+
+1. Back up the thread's `.jsonl` session file.
+2. Back up `~/.codex/state_5.sqlite` if you are changing the database.
+
+Then update both of these:
+
+1. `~/.codex/state_5.sqlite`
+   - table: `threads`
+   - field: `cwd`
+2. the thread's session file under `~/.codex/sessions/.../rollout-...jsonl`
+   - record type: `session_meta`
+   - field: `payload.cwd`
+
+If you update only one of those layers, the desktop UI may continue to group the thread incorrectly.
+
+After updating both, re-register the target project root in Codex:
+
+```bash
+open -a Codex "/full/target/project/path"
+```
+
+### Practical Example
+
+Observed working on this machine:
+
+- a thread was originally under `/Users/jason/Documents/Playground`
+- the intended grouping was `/Users/jason/Documents/Playground/运维`
+- updating both `threads.cwd` and `session_meta.payload.cwd`
+- then opening `/Users/jason/Documents/Playground/运维` in Codex
+
+caused the thread to appear under the target project.
+
+### Practical Interpretation
+
+For targeted thread moves, Codex may consult more than one layer:
+
+- sqlite thread metadata
+- the session file's original `cwd`
+- the currently registered workspace roots in the UI
+
+So the most reliable narrow fix was:
+
+1. back up first
+2. update both `cwd` values
+3. open the target folder in Codex
+4. verify the thread under `By project`
+
 ## Useful Local Files For Debugging
 
 If deeper debugging is needed, inspect these:
