@@ -172,6 +172,33 @@ Practical interpretation:
 
 Use this before deeper metadata repair whenever possible.
 
+## Broken Or Renamed Project Roots Can Hide Other Projects
+
+`By project` depends on the full registered project-root list, not only the project you are currently checking.
+
+If one registered project root no longer exists, or if a project folder was renamed without updating Codex's project list, Codex may fail to rebuild the project grouping cleanly. In that case, another project such as `Playground` can appear to be missing chats even when the affected chats still have the correct `cwd`.
+
+Observed on this machine:
+
+- old registered project root:
+  `/Users/jason/Documents/Project/AgentOperatingLayer`
+- real current project root:
+  `/Users/jason/Documents/Project/codex-operating-kit`
+- symptom:
+  `Playground` had many local threads, but `By project -> Playground` displayed only a small subset
+- effective fix:
+  rename or remove the old project entry inside Codex, then add the real `codex-operating-kit` folder back as a project
+
+After the broken root was corrected in Codex, many `Playground` chats reappeared.
+
+Practical rule:
+
+1. Check whether every registered project root still exists on disk.
+2. If a project was renamed, update Codex's project entry to the new real path.
+3. Reopen Codex and re-check `By project`.
+
+Do this before assuming the target project itself is damaged.
+
 ## Moving One Thread To Another Project
 
 Sometimes the chat itself is present, but it is grouped under the wrong project root.
@@ -277,7 +304,7 @@ If `By project` is incomplete after restore, re-check whether these commonly use
 
 High priority:
 
-- `/Users/jason/Documents/Project/AgentOperatingLayer`
+- `/Users/jason/Documents/Project/codex-operating-kit`
 - `/Users/jason/Documents/Project/appraisal-skill`
 - `/Users/jason/Documents/Project/Claw-code`
 
